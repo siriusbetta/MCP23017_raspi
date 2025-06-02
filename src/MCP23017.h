@@ -18,6 +18,7 @@ extern "C" {
 #include <fcntl.h>
 #include <unistd.h>
 #include <errno.h>
+#include <vector>
 
 namespace mcp32017{
 #include "stdint-gcc.h"
@@ -52,6 +53,8 @@ public:
 
     bool bitRead(int32_t num, uint8_t index);
     void bitWrite(uint8_t &var, uint8_t index, uint8_t bit);
+    void addCS(uint8_t cs);
+    void addCS(std::vector<uint8_t> &cs);
 private:
     int kI2CBus ;         // I2C bus of the MCP23017
     int kI2CFileDescriptor ;        // File Descriptor to the MCP23017

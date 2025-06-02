@@ -334,4 +334,15 @@ uint8_t MCP23017::getLastInterruptPinValue(){
 
 	return MCP23017_INT_ERR;
 }
+
+  void MCP23017::addCS(uint8_t cs) {
+    pinMode(cs, OUTPUT);
+    digitalWrite(cs, HIGH);
+  }
+  
+  void MCP23017::addCS(std::vector<uint8_t> &cs){
+    for(auto pin : cs){
+      addCS(pin);
+    }
+  }
 }
